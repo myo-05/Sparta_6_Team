@@ -1,0 +1,31 @@
+<button id="getLocation" type="button">위치 정보 수집</button> 
+<div id="map" style="width:500px; height: 500px;display: block;"></div>
+
+<script> 
+(function () {
+  let map, infoWindow; 
+  window.initMap = function () { 
+    map = new google.maps.Map(document.getElementById('map'), { 
+      center: {lat: -34.397, lng: 150.644}, 
+      zoom: 8 
+    }); 
+    infoWindow = new google.maps.InfoWindow({map: map}); 
+    infoWindow.setContent('Your location'); 
+    }; function successCallback(position) { 
+      let pos = { 
+        lat: position.coords.latitude, 
+        lng: position.coords.longitude 
+        }; 
+        infoWindow.setPosition(pos); 
+        map.setCenter(pos); 
+        alert("Your current position is: latitude(" + pos.lat + "), longitude(" + pos.lng + ")"); 
+    } 
+    function errorCallback(error) {
+        alert("Error: " + error.message); 
+    } document.getElementById("getLocation").onclick = function () { 
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback); 
+    }; 
+  }()); 
+  </script> 
+  <!--key=$API_KEY 부분은 각자의 구글 계정에 사이트에 맞는 키를 신청해서 사용해야함-->
+  <script src="https://maps.googleapis.com/maps/api/js?key={$API_KEY}&callback=initMap" async="" defer=""></script>
