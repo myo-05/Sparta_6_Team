@@ -17,7 +17,5 @@ function click(event) {
     } else {
         p2.style.transform = "rotateY(180deg)";
     }
-
-    console.log(p2);
 }
 
