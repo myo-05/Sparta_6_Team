@@ -20,3 +20,4 @@ function click(event) {
 
     console.log(p2);
 }
+
