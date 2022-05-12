@@ -1,1 +1,0 @@
-# Sparta_6_Team
