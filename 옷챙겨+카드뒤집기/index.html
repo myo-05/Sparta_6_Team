@@ -53,22 +53,29 @@
             <div class="card1_back" id="card1-b">
                 <!---------------------뒤면------------------>
                 <div class="weather_comment">
-                    <label class="weather_coment_text">오늘의 날씨는 23℃ 입니다<br>자외선 지수는 <span class="UV_index">높음</span> 수준
-                        이므로 <br> 선크림을 꼭 발라야할 것 같네요 :)</label>
+                    <label class="weather_coment_text"></label>
                 </div>
                 <div class="line"></div>
                 <div class="weather_info">
                     <div class="rainfall">
-                        강수확률 : 10%
+                        <img class="rainfall_icon" src="images/umbrella.png" alt="강수확률 아이콘">
+                        <div class="rain_degree"></div>
+                        강수확률
                     </div>
                     <div class="humid">
-                        습도 : 40%
+                        <img class="humid_icon" src="images/humidity.png" alt="습도 아이콘">
+                        <div class="humid_degree"></div>
+                        습도
                     </div>
                     <div class="mise">
-                        미세먼지 : 좋음
+                        <img class="mise_icon" src="images/good.png" alt="미세먼지 아이콘">
+                        <div class="mise_degree"></div>
+                        미세먼지
                     </div>
                     <div class="king_mise">
-                        초미세먼지 : 나쁨
+                        <img class="king_mise_icon" src="images/good.png" alt="초미세먼지 아이콘">
+                        <div class="king_mise_degree"></div>
+                        초미세먼지
                     </div>
                 </div>
 
@@ -80,7 +87,7 @@
         <div id="card2" class="card2">
             <div class="card2_front" id="card2-f">
                 <h2>오늘은 뭐 입지?</h2>
-                <img src="images/짱구편집2.png" alt="짱구가 옷을 고르는 아이콘">
+                <img src="images/짱구최종.png" alt="짱구가 옷을 고르는 아이콘">
                 <img src="./images/return.png" alt="누르면 카드가 뒤집어집니다." class="return">
             </div>
             <div class="card2_back" id="card2-b">
@@ -96,5 +103,6 @@
 </div>
 <script src="changeCard.js"></script>
 <script src="weather_info.js"></script>
+<script src="weather_info_detail.js"></script>
 </body>
 </html>
