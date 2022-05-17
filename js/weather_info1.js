@@ -85,15 +85,15 @@ function firstCall(lon, lat) {
     };
 
     let background = {
-        '01': 'img/01.jpg',
-        '02': 'img/02.jpg',
-        '03': 'img/03.jpg',
-        '04': 'img/04.jpg',
-        '09': 'img/09.jpg',
-        '10': 'img/10.jpg',
-        '11': 'img/11.jpg',
-        '13': 'img/13.jpg',
-        '50': 'img/50.jpg'
+      '01': './images/쾌청.gif',
+      '02': './images/맑음.gif',
+      '03': './images/흐림.gif',
+      '04': './images/흐림.gif',
+      '09': './images/비.gif',
+      '10': './images/뇌우.gif',
+      '11': './images/번개.gif',
+      '13': './images/눈.gif',
+      '50': './images/안개.gif'
     };
 
     $.ajax({
@@ -114,21 +114,21 @@ function firstCall(lon, lat) {
             // 배경화면
 
 
-             if(weatherIcon[$Icon] =='fas fa-sun'){
-               $('#wrap').css({"background":"url(./images/쾌청.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'});
-               }else if(weatherIcon[$Icon] =='fas fa-cloud-sun'){
-                $('#wrap').css({"background":"url(./images/맑음.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'});
-               }else if(weatherIcon[$Icon] =='fas fa-cloud fa-cloud-meatball'){
-                $('#wrap').css({"background":"url(./images/흐림.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'});
-               }else if(weatherIcon[$Icon] =='fas fa-cloud-sun-rain fa-cloud-showers-heavy'){
-                $('#wrap').css({"background":"url(./images/비.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'})
-               }else if(weatherIcon[$Icon] =='fas fa-poo-storm'){
-                $('#wrap').css({"background":"url(./images/번개.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'}) 
-               }else if(weatherIcon[$Icon] =='far fa-snowflake'){
-                $('#wrap').css({"background":"url(./images/눈.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'})  
-               }else if(weatherIcon[$Icon] =='fas fa-smog'){
-                $('#wrap').css({"background":"url(./images/안개.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'})  
-               }
+            //  if(weatherIcon[$Icon] =='fas fa-sun'){
+            //    $('#wrap').css({"background":"url(./images/쾌청.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'});
+            //    }else if(weatherIcon[$Icon] =='fas fa-cloud-sun'){
+            //     $('#wrap').css({"background":"url(./images/맑음.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'});
+            //    }else if(weatherIcon[$Icon] =='fas fa-cloud fa-cloud-meatball'){
+            //     $('#wrap').css({"background":"url(./images/흐림.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'});
+            //    }else if(weatherIcon[$Icon] =='fas fa-cloud-sun-rain fa-cloud-showers-heavy'){
+            //     $('#wrap').css({"background":"url(./images/비.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'})
+            //    }else if(weatherIcon[$Icon] =='fas fa-poo-storm'){
+            //     $('#wrap').css({"background":"url(./images/번개.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'}) 
+            //    }else if(weatherIcon[$Icon] =='far fa-snowflake'){
+            //     $('#wrap').css({"background":"url(./images/눈.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'})  
+            //    }else if(weatherIcon[$Icon] =='fas fa-smog'){
+            //     $('#wrap').css({"background":"url(./images/안개.gif)", 'background-repeat' : 'no-repeat', 'background-position':'center center','background-size': 'cover'})  
+            //    }
 
               
               
@@ -144,9 +144,9 @@ function firstCall(lon, lat) {
             $('.feel').text($feel);
 
 
-            $('.weather_con').css('background', 'url(' + background[$Icon] + ')');
-            $('.weather_con').css('background-size', 'cover');
-            $('.weather_con').css('background-repeat', 'no-repeat');
+            $('#wrap').css('background', 'url(' + background[$Icon] + ')');
+            $('#wrap').css('background-size', 'cover');
+            $('#wrap').css('background-repeat', 'no-repeat');
           
   
         }
@@ -168,15 +168,15 @@ function cityCall() {
     };
 
     let background = {
-        '01': 'img/01.jpg',
-        '02': 'img/02.jpg',
-        '03': 'img/03.jpg',
-        '04': 'img/04.jpg',
-        '09': 'img/09.jpg',
-        '10': 'img/10.jpg',
-        '11': 'img/11.jpg',
-        '13': 'img/13.jpg',
-        '50': 'img/50.jpg'
+      '01': './images/쾌청.gif',
+      '02': './images/맑음.gif',
+      '03': './images/흐림.gif',
+      '04': './images/흐림.gif',
+      '09': './images/비.gif',
+      '10': './images/뇌우.gif',
+      '11': './images/번개.gif',
+      '13': './images/눈.gif',
+      '50': './images/안개.gif'
     }
 
     $.ajax({
@@ -202,9 +202,9 @@ function cityCall() {
             $('.Min_Temp').text($MinTemp);
             $('.feel').text($feel);
 
-            $('.weather_con').css('background', 'url(' + background[$Icon] + ')');
-            $('.weather_con').css('background-size', 'cover');
-            $('.weather_con').css('background-repeat', 'no-repeat');
+            $('#wrap').css('background', 'url(' + background[$Icon] + ')');
+            $('#wrap').css('background-size', 'cover');
+            $('#wrap').css('background-repeat', 'no-repeat');
             
     
 
@@ -240,15 +240,15 @@ function ChangeCity(event) {
     };
 
     let background = {
-        '01': 'img/01.jpg',
-        '02': 'img/02.jpg',
-        '03': 'img/03.jpg',
-        '04': 'img/04.jpg',
-        '09': 'img/09.jpg',
-        '10': 'img/10.jpg',
-        '11': 'img/11.jpg',
-        '13': 'img/13.jpg',
-        '50': 'img/50.jpg'
+      '01': './images/쾌청.gif',
+      '02': './images/맑음.gif',
+      '03': './images/흐림.gif',
+      '04': './images/흐림.gif',
+      '09': './images/비.gif',
+      '10': './images/뇌우.gif',
+      '11': './images/번개.gif',
+      '13': './images/눈.gif',
+      '50': './images/안개.gif'
     }
 
     $.ajax({
@@ -274,9 +274,9 @@ function ChangeCity(event) {
             $('.Min_Temp').text($MinTemp);
             $('.feel').text($feel);
 
-            $('.weather_con').css('background', 'url(' + background[$Icon] + ')');
-            $('.weather_con').css('background-size', 'cover');
-            $('.weather_con').css('background-repeat', 'no-repeat');
+            $('#wrap').css('background', 'url(' + background[$Icon] + ')');
+            $('#wrap').css('background-size', 'cover');
+            $('#wrap').css('background-repeat', 'no-repeat');
 
             console.log(city);
             

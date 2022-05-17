@@ -131,6 +131,7 @@ h1 .green {
 
 }
 
+
 #card2 h2 {
     font-weight: 200;
     font-size: 60px;
@@ -310,13 +311,63 @@ sub {
 }
 
 /* 카드 뒷면 */
-.card2_back .clothes1{
+.card2_back .sum{
+  width: 100%;
+  height: 100%;
+}
+.card2_back .sum ul{
+  margin: 0 auto;
+  width: 200px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.card2_back .sum .manbtn{
+  border-radius: 20px ;
+  float: left;
+  width: 100px;
+  height: 100%;
+  background-color: rgba(125, 125, 125);
+}
+.card2_back .sum .manbtn:hover{
+  cursor: pointer;
+}
+
+.card2_back .sum .manbtn p{
+  color: #000;
+  padding: 10px;
+}
+.card2_back .sum .womanbtn p{
+  color: #000;
+  padding: 10px;
+}
+.card2_back .sum .womanbtn{
+  border-radius: 20px;
+  float: left;
+  width: 100px;
+  height: 100%;
+  background-color: #fff;
+}
+.card2_back .sum .womanbtn:hover{
+  cursor: pointer;
+}
+.card2_back .sum .clothes1{
+  display: none;
   width: 100%;
   height: 100%;
   background:url(../images/22~20.png) no-repeat;
   background-position: center;
   background-size: 100% 100%;
-  display: flex;
+  
+}
+.card2_back .sum .clothes1_2{
+  width: 100%;
+  height: 100%;
+  background:url(../images/12~16남.png) no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  
 }
 .container{
   width: 100%;
@@ -328,7 +379,8 @@ sub {
 .card2_back .container .clothes2{
   width: 100%;
   height: 100%;
-  background-color: rgb(144, 0, 255);
+  background-color: rgba(84, 84, 84, 0.378);
+  border-radius: 20px;
 }
 
 .card2_back .clothes3{
@@ -344,7 +396,13 @@ sub {
    backface-visibility: hidden;
    transition: transform 1s;
    transform-style: preserve-3d;
+  
 } 
+.front p{
+  font-size: 32px;
+  margin: 5% 7%;
+  
+}
 .back{
   
   width: 100%;
