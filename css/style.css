@@ -413,3 +413,26 @@ sub {
   backface-visibility: hidden;
 }
 
+/* 푸터 */
+
+.fot1 {
+  width: 95%;
+  margin: 1% auto 0;
+}
+.fot1 h3 {
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: 100;
+  color: #999;
+}
+
+.fot1 hr{
+  background-color: #dadada
+}
+.info{
+  text-align: left;
+  font-size: 20px;
+  font-weight: 100;
+  color: #999;
+}
