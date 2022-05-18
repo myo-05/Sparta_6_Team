@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style media="screen">
+
+        .body{
+            background: grey;
+        }
+
+        #weatherInfo {
+            border: 6px solid;
+            border-radius: 1em;
+            background-color: green;
+            width: 18em;
+            padding: 1em;
+            color: white;
+            font-family: sans-serif;
+
+        }
+
+        
+
+        
+    </style>
+</head>
+<body>
+    <button id="findLocation"> Show location</button>
+    <p id="status">Not yet</p>
+  <div id="weatherInfo">
+      <h1>weather Set</h1>
+    <p>Data </p>
+  </div> 
+  
+  <script type="text/javascript">
+    //////////////////////////////////////////////geolocation
+      document.querySelector('#findLocation').addEventListener('click', geoLookUp, false)
+
+      function geoLookUp() {
+          const status= document.querySelector('#status')
+
+          function success(position) {
+            const latitude= position.coords.latitude
+            const longitude= position.coords.longitude
+            status.textContent= `lat: ${latitude}, lon: ${longitude}`
+            setWeather(latitude, longitude)
+            
+          }
+          function error(err) {
+              status.textContent= `위치를 찾을 수 없습니다. Error: ${err.code}, ${err.message}`
+          }
+
+          if (!navigator.geolocation) {
+              status.textContent=  "현재 위치에서 지리적 위치가 지원되지 않거나 허용되지 않습니다."
+          } else {
+              status.textContent= "Loading..."
+              navigator.geolocation.getCurrentPosition(success, error)
+          }
+      }
+
+
+    //////////////////////////////////////////////////위치에 따른 날씨정보
+    function setWeather(latitude, longitude) {
+        const p= document.querySelector('#weatherInfo p')
+    
+    let openWeatherData= {}
+    let xhr= new XMLHttpRequest()
+    // xhr.open('GET',`http://api.openweathermap.org/data/2.5/air_pollution?lat=37.5683&lon=126.9778&appid=4a992b233723cebcd77991cb28f2bd39`)
+    xhr.open('GET',`http://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude}&lon=${longitude}&appid=4a992b233723cebcd77991cb28f2bd39`)
+    xhr.responseType= 'text'
+
+    xhr.addEventListener('load', function() {
+        
+        if (xhr.status === 200) {
+            p.textContent='londing...'
+            openWeatherData= JSON.parse(xhr.responseText)
+            populateWeatherInfo(openWeatherData, p) 
+        } else {
+            p.textContent= 'error:' + xhr.status
+        }
+    },false)
+
+    xhr.send()  
+
+    }
+    
+
+    ////////////////////////////// 미세먼지 , 초미세먼지 
+    function populateWeatherInfo(openWeatherData, p) {
+        const mise= Math.round(openWeatherData['list'][0]['components']['pm2_5'])
+        const supermise= Math.round(openWeatherData['list'][0]['components']['pm10'])
+
+        let ms= ''
+
+        if (mise > 80 ) {
+            ms = `Bad`
+        } else if(mise >30) {
+            ms= `Normal` 
+        } else {
+            ms= `Good`
+        }
+
+        let sms= ''
+
+        if (supermise > 35 ) {
+            sms = `Bad`
+        } else if(supermise >15) {
+            sms= `Normal` 
+        } else {
+            sms= `Good`
+        }
+        
+      
+        const str= `미세먼지: ${mise} ${ms}<br> 초미세먼지: ${supermise} ${sms}`
+        p.innerHTML= str
+
+    }
+ 
+ </script>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style media="screen">
+
+        .body{
+            background: grey;
+        }
+
+        #weatherInfo {
+            border: 6px solid;
+            border-radius: 1em;
+            background-color: green;
+            width: 18em;
+            padding: 1em;
+            color: white;
+            font-family: sans-serif;
+
+        }
+
+        
+        
+
+        
+    </style>
+</head>
+<body>
+    <button id="findLocation"> Show location</button>
+    <p id="status">Not yet</p>
+  <div id="weatherInfo">
+      <h1>weather Set</h1>
+    <p>Data </p>
+  </div> 
+  
+  <script type="text/javascript">
+    //////////////////////////////////////////////geolocation
+      document.querySelector('#findLocation').addEventListener('click', geoLookUp, false)
+
+      function geoLookUp() {
+          const status= document.querySelector('#status')
+
+          function success(position) {
+            const latitude= position.coords.latitude
+            const longitude= position.coords.longitude
+            status.textContent= `lat: ${latitude}, lon: ${longitude}`
+            setWeather(latitude, longitude)
+            
+          }
+          function error(err) {
+              status.textContent= `위치를 찾을 수 없습니다. Error: ${err.code}, ${err.message}`
+          }
+
+          if (!navigator.geolocation) {
+              status.textContent=  "현재 위치에서 지리적 위치가 지원되지 않거나 허용되지 않습니다."
+          } else {
+              status.textContent= "Loading..."
+              navigator.geolocation.getCurrentPosition(success, error)
+          }
+      }
+
+
+    //////////////////////////////////////////////////위치에 따른 날씨정보
+    function setWeather(latitude, longitude) {
+        const p= document.querySelector('#weatherInfo p')
+    
+    let openWeatherData= {}
+    let xhr= new XMLHttpRequest()
+    // xhr.open('GET',`http://api.openweathermap.org/data/2.5/air_pollution?lat=37.5683&lon=126.9778&appid=4a992b233723cebcd77991cb28f2bd39`)
+    xhr.open('GET',`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=daily&appid=4a992b233723cebcd77991cb28f2bd39&units=metric`)
+    xhr.responseType= 'text'
+
+    xhr.addEventListener('load', function() {
+        
+        if (xhr.status === 200) {
+            p.textContent='londing...'
+            openWeatherData= JSON.parse(xhr.responseText)
+            populateWeatherInfo(openWeatherData, p) 
+        } else {
+            p.textContent= 'error:' + xhr.status
+        }
+    },false)
+
+    xhr.send()  
+
+    }
+    
+
+    /////////////////////// 습도, 풍속, 자외선지수, 강수확률
+    function populateWeatherInfo(openWeatherData, p) {
+        const humid= Math.round(openWeatherData['current']['humidity']) //현재 습도
+        const wind= Math.round(openWeatherData['current']['wind_speed']) // 현재 풍속
+        const uv= Math.round(openWeatherData['current']['wind_speed']) //현재 자외선 지수
+        const water= Math.round(openWeatherData['current']['wind_speed']) //현재 강수 확률
+        
+        let uvi= ''
+
+        if (uv > 7.0 ) {
+            uvi = `Bad`
+        } else if(uv > 5.0) {
+            uvi= `Normal` 
+        } else {
+            uvi= `Good`
+        }
+//// Q: 수치에 따른 표시 먹이는 방법?
+    
+        const str= `습도: ${humid} % <br> 풍속: ${wind} m/s <br> 자외선 지수: ${uv} ${uvi} <br> 강수확률: ${water} %`
+        p.innerHTML= str
+
+    }
+ 
+ </script>
+
+
+</body>
+
+
+</html>
