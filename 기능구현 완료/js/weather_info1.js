@@ -117,7 +117,7 @@ let city_name_reverse = {
     'incheon': '인천',
     'ulsan': '울산',
     'Suncheon': '순천',
-    'kwanyang': '광양',
+    'kwangyang': '광양',
     'chuncheon': '춘천',
     'jinju': '진주',
     'changwon': '창원',
