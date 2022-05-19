@@ -139,7 +139,7 @@ h1 .green {
 }
 
 #card2 .Jang {
-  width: 55%;
+    width: 55%;
 }
 
 .input_box {
@@ -224,29 +224,29 @@ sub {
 .rainfall,
 .humid,
 .mise,
-.king_mise{
+.king_mise {
     color: white;
 }
 
 
-.weather_comment{
+.weather_comment {
     width: 100%;
     height: 75%;
     text-align: center;
 }
 
-.weather_coment_text{
+.weather_coment_text {
     font-size: 1vw;
     line-height: 55px;
     margin: auto;
     position: absolute;
     top: 40%;
     left: 50%;
-    transform:translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 
-.line{
+.line {
     background-color: white;
     width: 80%;
     height: 2px;
@@ -254,7 +254,7 @@ sub {
     left: 10%;
 }
 
-.weather_info{
+.weather_info {
     width: 100%;
     height: 20%;
     padding: 7%;
@@ -264,7 +264,7 @@ sub {
 .rainfall,
 .humid,
 .mise,
-.king_mise{
+.king_mise {
     width: 25%;
     height: 50%;
     color: white;
@@ -276,7 +276,7 @@ sub {
 .rainfall_icon,
 .humid_icon,
 .mise_icon,
-.king_mise_icon{
+.king_mise_icon {
     width: 23%;
     margin-bottom: 7%;
 }
@@ -284,7 +284,7 @@ sub {
 .rain_degree,
 .humid_degree,
 .mise_degree,
-.king_mise_degree{
+.king_mise_degree {
     font-size: 1vw;
     margin-bottom: 10%;
 }
@@ -311,128 +311,156 @@ sub {
 }
 
 /* 카드 뒷면 */
-.card2_back .sum{
-  width: 100%;
-  height: 100%;
-}
-.card2_back .sum ul{
-  margin: 0 auto;
-  width: 200px;
-  height: 40px;
-  background-color: #fff;
-  border-radius: 20px;
+.card2_back .sum {
+    width: 100%;
+    height: 100%;
 }
 
-.card2_back .sum .manbtn{
-  border-radius: 20px ;
-  float: left;
-  width: 100px;
-  height: 100%;
-  background-color: rgba(125, 125, 125);
-}
-.card2_back .sum .manbtn:hover{
-  cursor: pointer;
+.card2_back .sum ul {
+    margin: 0 auto;
+    width: 200px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 20px;
 }
 
-.card2_back .sum .manbtn p{
-  color: #000;
-  padding: 10px;
-}
-.card2_back .sum .womanbtn p{
-  color: #000;
-  padding: 10px;
-}
-.card2_back .sum .womanbtn{
-  border-radius: 20px;
-  float: left;
-  width: 100px;
-  height: 100%;
-  background-color: #fff;
-}
-.card2_back .sum .womanbtn:hover{
-  cursor: pointer;
-}
-.card2_back .sum .clothes1{
-  display: none;
-  width: 100%;
-  height: 100%;
-  background:url(../images/22~20.png) no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-  
-}
-.card2_back .sum .clothes1_2{
-  width: 100%;
-  height: 100%;
-  background:url(../images/12~16남.png) no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
-  
-}
-.container{
-  width: 100%;
-  height: 100%;
-  position: relative;
- 
+.card2_back .sum .manbtn {
+    border-radius: 20px;
+    float: left;
+    width: 100px;
+    height: 100%;
+    background-color: rgba(125, 125, 125);
 }
 
-.card2_back .container .clothes2{
-  width: 100%;
-  height: 100%;
-  background-color: rgba(84, 84, 84, 0.378);
-  border-radius: 20px;
+.card2_back .sum .manbtn:hover {
+    cursor: pointer;
 }
 
-.card2_back .clothes3{
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0, 4, 255);
+.card2_back .sum .manbtn p {
+    color: #000;
+    padding: 10px;
 }
 
-.front{
-   width: 100%;
-   position: absolute;
-   background: blanchedalmond;  
-   backface-visibility: hidden;
-   transition: transform 1s;
-   transform-style: preserve-3d;
-  
-} 
-.front p{
-  font-size: 32px;
-  margin: 5% 7%;
-  
+.card2_back .sum .womanbtn p {
+    color: #000;
+    padding: 10px;
 }
-.back{
-  
-  width: 100%;
-  transform: rotateY(-90deg);
-  display: flex;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
+
+.card2_back .sum .womanbtn {
+    border-radius: 20px;
+    float: left;
+    width: 100px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.card2_back .sum .womanbtn:hover {
+    cursor: pointer;
+}
+
+.card2_back .sum .clothes1 {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: url(../images/22~20.png) no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+}
+
+.card2_back .sum .clothes1_2 {
+    width: 100%;
+    height: 100%;
+    background: url(../images/12~16남.png) no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+.card2_back .container .clothes2 {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(84, 84, 84, 0.378);
+    border-radius: 20px;
+}
+
+.card2_back .clothes3 {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 4, 255);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.front {
+    width: 100%;
+    position: absolute;
+    background: blanchedalmond;
+    backface-visibility: hidden;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+
+}
+
+.front p {
+    font-size: 32px;
+    margin: 5% 7%;
+
+}
+
+.back {
+
+    width: 100%;
+    transform: rotateY(-90deg);
+    display: flex;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 
 /* 푸터 */
 
 .fot1 {
-  width: 95%;
-  margin: 1% auto 0;
-}
-.fot1 h3 {
-  text-align: left;
-  margin-bottom: 10px;
-  font-size: 40px;
-  font-weight: 100;
-  color: #999;
+    width: 95%;
+    margin: 1% auto 0;
 }
 
-.fot1 hr{
-  background-color: #dadada
+.fot1 h3 {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 40px;
+    font-weight: 100;
+    color: #999;
 }
-.info{
-  text-align: left;
-  font-size: 20px;
-  font-weight: 100;
-  color: #999;
+
+.fot1 hr {
+    background-color: #dadada
+}
+
+.info {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 100;
+    color: #999;
+}
+
+.clothes_link {
+    width: 30%;
+    height: 150px;
+    margin: auto;
+}
+
+.return2 {
+    width: 5%;
+    position: absolute;
+    bottom: 90%;
+    right: 50%;
 }

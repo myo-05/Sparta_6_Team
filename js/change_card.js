@@ -19,9 +19,8 @@ function click(event) {
     }
 }
 
-const change2 = document.querySelectorAll('.card');
-change2[0].addEventListener('click', click2);
-change2[1].addEventListener('click', click2);
+const change2 = document.querySelector('.return2');
+change2.addEventListener('click', click2);
 
 
 function click2() {
