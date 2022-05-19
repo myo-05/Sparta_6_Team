@@ -1271,18 +1271,18 @@ function secondCall(lon, lat) {
 ///////////////////미세먼지 치수에 따른 변화 (css에 class값 넣어 색 추가만 하면 됩니다.)
             let mise_degree = '';
             if ($mise > 80) {
-                mise_degree = '매우 나쁨';
-            } else if ($mise > 30) {
                 mise_degree = '나쁨';
+            } else if ($mise > 30) {
+                mise_degree = '보통';
             } else {
                 mise_degree = '좋음';
             }
 ///////////////////초미세먼지 치수에 따른 변화 (css에 class값 넣어 색 추가만 하면 됩니다.)
             let king_mise_degree = '';
             if ($supermise > 35) {
-                king_mise_degree = '매우 나쁨';
-            } else if ($supermise > 15) {
                 king_mise_degree = '나쁨';
+            } else if ($supermise > 15) {
+                king_mise_degree = '보통';
             } else {
                 king_mise_degree = '좋음'
             }
@@ -1291,10 +1291,10 @@ function secondCall(lon, lat) {
                 case '좋음':
                     $(".mise_icon").attr("src", "images/good.png");
                     break;
-                case '나쁨':
+                case '보통':
                     $(".mise_icon").attr("src", "images/bad.png");
                     break;
-                case '매우 나쁨':
+                case '나쁨':
                     $(".mise_icon").attr("src", "images/worst.png");
                     break;
             }
@@ -1303,16 +1303,18 @@ function secondCall(lon, lat) {
                 case '좋음':
                     $(".king_mise_icon").attr("src", "images/good.png");
                     break;
-                case '나쁨':
+                case '보통':
                     $(".king_mise_icon").attr("src", "images/bad.png");
                     break;
-                case '매우 나쁨':
+                case '나쁨':
                     $(".king_mise_icon").attr("src", "images/worst.png");
                     break;
             }
-            if ((mise_degree == '나쁨' && king_mise_degree == '나쁨') || mise_degree == "매우 나쁨" || king_mise_degree == "매우 나쁨") {
-                mise_coment = '공기가 좋지 않으니 마스크를 챙겨야 할 것 같아요 :('
+            if (mise_degree == '나쁨' || king_mise_degree == '나쁨') {
+                mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
+                mise_coment=mise_coment.replace(/\n/g,'<Br>');
             }
+
             $('.mise_degree').html(mise_degree);
             $('.king_mise_degree').html(king_mise_degree);
         }
@@ -1330,10 +1332,10 @@ function thirdCall(lon, lat) {
         type: 'GET',
         success: function (response) {
             let $humid = Math.round(response['current']['humidity']);
-            let $wind = Math.round(response['current']['wind_speed']);
             let $uv = Math.round(response['current']['uvi']);
             let $rain = Math.round(response['hourly'][0]['pop']);
-            let $weather = response['current']['weather'][0].main;
+            //let $weather = response['current']['weather'][0].main;
+            let $weather = 'rain'
             let $temp = Math.round(response['current']['temp']);
             let temperture = $temp;
 
@@ -1347,10 +1349,7 @@ function thirdCall(lon, lat) {
                 UV = '낮음'
             }
             switch (UV) {
-                case '높음':
-                    UV_coment = '오늘 모자나 양산을 챙기는 건 어떨까요 ??'
-                    break;
-                case '보통':
+                case '높음', '보통':
                     UV_coment = '오늘 선크림을 바르는 건 어떨까요??'
                 case '낮음':
                     UV_coment = '자외선 걱정은 없겠네요!'
@@ -1360,15 +1359,17 @@ function thirdCall(lon, lat) {
             let today_weather = $weather;
             let humid_degree = $humid;
             if (rain_degree >= 0.5 || today_weather == 'Rain' || today_weather == 'rain') {
-                rain_coment = '비 소식이 있으니, 우산을 챙기는 것이 좋을 것 같네요 !!'
+                rain_coment = '비 소식이 있으니, \n우산을 챙기는 것이 좋을 것 같네요 !!\n'
+                rain_coment = rain_coment.replace(/\n/g,'<Br>');
             }else {
                 rain_coment = '';
             }
             $('.rain_degree').html(rain_degree + ' %');
             $('.humid_degree').html(humid_degree + ' %');
             $('.weather_coment_text').html('현재 기온은 ' + temperture + '℃ 이고,<br>' +
-                '자외선 지수는 ' + UV + ' 수준입니다.<br>' +
+                '자외선 지수는 ' + UV + ' 수준이므로<br>' +
                 UV_coment + '<br>' + rain_coment + mise_coment);
+
             console.log(today_weather);
             console.log(rain_degree);
         }
