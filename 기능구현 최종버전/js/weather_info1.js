@@ -9,6 +9,10 @@ let city = "Seoul";
 let rain = '';
 let index = 0;
 let mise_coment = '';
+let UV_coment = '';
+let rain_coment = '';
+let UV = ''
+
 let city_name = {
     '서울': 'Seoul',
     '부산': 'busan',
@@ -303,7 +307,6 @@ $(document).ready(function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             const latitude = String(position.coords.latitude);
             const longitude = String(position.coords.longitude);
-            mise_coment = '';
             firstCall(longitude, latitude);
             secondCall(longitude, latitude); //추가(미세, 초미세)
             thirdCall(longitude, latitude); // 추가 (습도,풍속,자외선,강수)
@@ -318,7 +321,6 @@ function showError(error) {
 
         case error.PERMISSION_DENIED:
             alert("사용자가 정보제공을 거부했습니다. 서울기준으로 출력합니다.");
-             mise_coment = '';
             secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             cityCall();
@@ -326,7 +328,6 @@ function showError(error) {
 
         case error.POSITION_UNAVAILABLE:
             alert("위치정보 이용 불가,서울기준으로 출력합니다.");
-            mise_coment = '';
             secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             cityCall();
@@ -334,7 +335,6 @@ function showError(error) {
 
         case error.TIMEOUT:
             alert("위치정보 얻기 요청 시간초과,서울기준으로 출력합니다.");
-            mise_coment = '';
             secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             cityCall();
@@ -342,7 +342,6 @@ function showError(error) {
 
         case error.UNKNOWN_ERROR:
             alert("예상치 못한 에러 발생");
-            mise_coment = '';
             secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             cityCall();
@@ -1340,7 +1339,6 @@ function ChangeCity(event) {
             }
             getEvent_once(temp);
             if (city != '') {
-                mise_coment = '';
                 secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
                 thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
                 cityCall();
@@ -1349,11 +1347,10 @@ function ChangeCity(event) {
     });
 }
 
-let UV_coment = '';
-let rain_coment = '';
 
 
 function secondCall(lon, lat) {
+    mise_coment = '';
     $.ajax({
         url: `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=4a992b233723cebcd77991cb28f2bd39`,
         dataType: 'json',
@@ -1441,6 +1438,8 @@ function secondCall(lon, lat) {
 
 ////// 뒷면 (위치에 따른 기상 정보->습도,풍속,자외선,강수)
 function thirdCall(lon, lat) {
+    UV_coment = '';
+    rain_coment = '';
 
     $.ajax({
         url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=daily&appid=4a992b233723cebcd77991cb28f2bd39&units=metric`,
@@ -1455,7 +1454,7 @@ function thirdCall(lon, lat) {
             let $temp = Math.round(response['current']['temp']);
             let temperture = $temp;
 
-            let UV = ''
+
 ///////////////////자외선 지수 치수에 따른 변화 (css에 class값 넣어 색 추가만 하면 됩니다.)
             if ($uv > 6.0) {
                 UV = '높음'
