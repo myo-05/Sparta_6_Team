@@ -1410,31 +1410,24 @@ function secondCall(lon, lat) {
             } else if (mise_degree == '나쁨' && king_mise_degree == '보통' || mise_degree == '보통' && king_mise_degree == '나쁨') {
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                 mise_coment = '';
             } else if (mise_degree == '나쁨' && king_mise_degree == '좋음' || mise_degree == '좋음' && king_mise_degree == '나쁨') {
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                 mise_coment = '';
             } else if (mise_degree == '좋음' && king_mise_degree == '좋음') {
                 mise_coment = '미세먼지 지수가 좋음 수준입니다.\n 오늘은 공기가 참 좋네요!!!'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                 mise_coment = '';
             } else if (mise_degree == '좋음' && king_mise_degree == '보통' || mise_degree == '보통' && king_mise_degree == '좋음') {
                 mise_coment = '미세먼지 지수가 좋음 수준입니다.\n 오늘은 공기가 참 좋네요!!!'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                 mise_coment = '';
             } else if (mise_degree == '보통' && king_mise_degree == '보통') {
                 mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                 mise_coment = '';
             } else if (mise_degree == '나쁨' && king_mise_degree == '좋음') {
                 mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                 mise_coment = '';
             } else if (mise_degree == '좋음' && king_mise_degree == '나쁨') {
                 mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                 mise_coment = '';
             }
 
             $('.mise_degree').html(mise_degree);
@@ -1493,7 +1486,5 @@ function thirdCall(lon, lat) {
                 '자외선 지수는 ' + UV + ' 수준이므로<br>' +
                 UV_coment + '<br>' + rain_coment + mise_coment);
         }
-
-
     })
 }
