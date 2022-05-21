@@ -11,7 +11,8 @@ let index = 0;
 let mise_coment = '';
 let UV_coment = '';
 let rain_coment = '';
-let UV = ''
+let UV = '';
+let myHTML = '';
 
 let city_name = {
     '서울': 'Seoul',
@@ -303,7 +304,6 @@ function femaleEvent(tep) {
 }
 
 $(document).ready(function () {
-    $('.weather_coment_text').empty();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             const latitude = String(position.coords.latitude);
@@ -1339,7 +1339,6 @@ function ChangeCity(event) {
             }
             getEvent_once(temp);
             if (city != '') {
-                 $('.weather_coment_text').empty();
                 secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
                 thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
                 cityCall();
@@ -1349,8 +1348,8 @@ function ChangeCity(event) {
 }
 
 
-
 function secondCall(lon, lat) {
+     $('.weather_coment_text').empty();
     $.ajax({
         url: `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=4a992b233723cebcd77991cb28f2bd39`,
         dataType: 'json',
@@ -1405,27 +1404,27 @@ function secondCall(lon, lat) {
             if (mise_degree == '나쁨' && king_mise_degree == '나쁨') {
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
+                console.log(mise_coment);
             } else if (mise_degree == '나쁨' && king_mise_degree == '보통' || mise_degree == '보통' && king_mise_degree == '나쁨') {
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
+                console.log(mise_coment);
             } else if (mise_degree == '나쁨' && king_mise_degree == '좋음' || mise_degree == '좋음' && king_mise_degree == '나쁨') {
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
+                console.log(mise_coment);
             } else if (mise_degree == '좋음' && king_mise_degree == '좋음') {
                 mise_coment = '미세먼지 지수가 좋음 수준입니다.\n 오늘은 공기가 참 좋네요!!!'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
+                console.log(mise_coment);
             } else if (mise_degree == '좋음' && king_mise_degree == '보통' || mise_degree == '보통' && king_mise_degree == '좋음') {
                 mise_coment = '미세먼지 지수가 좋음 수준입니다.\n 오늘은 공기가 참 좋네요!!!'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
+                console.log(mise_coment);
             } else if (mise_degree == '보통' && king_mise_degree == '보통') {
                 mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-            } else if (mise_degree == '나쁨' && king_mise_degree == '좋음') {
-                mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
-                mise_coment = mise_coment.replace(/\n/g, '<Br>');
-            } else if (mise_degree == '좋음' && king_mise_degree == '나쁨') {
-                mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
-                mise_coment = mise_coment.replace(/\n/g, '<Br>');
+                console.log(mise_coment);
             }
 
             $('.mise_degree').html(mise_degree);
@@ -1476,12 +1475,16 @@ function thirdCall(lon, lat) {
                 rain_coment = '비 소식이 없어요!! \n 비 걱정을 좀 덜어도 되겠어요!!\n'
                 rain_coment = rain_coment.replace(/\n/g, '<Br>');
             }
+            myHTML= '현재 기온은 ' + temperture + '℃ 이고,<br>' +
+                '자외선 지수는 ' + UV + ' 수준이므로<br>' +
+                UV_coment + '<br>' + rain_coment + mise_coment
 
             $('.rain_degree').html(rain_degree * 100 + ' %');
             $('.humid_degree').html(humid_degree + ' %');
-            $('.weather_coment_text').html('현재 기온은 ' + temperture + '℃ 이고,<br>' +
-                '자외선 지수는 ' + UV + ' 수준이므로<br>' +
-                UV_coment + '<br>' + rain_coment + mise_coment);
+            $('.weather_coment_text').html(myHTML);
+            console.log(myHTML);
+
         }
     })
 }
+
