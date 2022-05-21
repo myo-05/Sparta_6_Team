@@ -8,6 +8,7 @@ let female = document.querySelector('.womanbtn');
 let city = "Seoul";
 let rain = '';
 let index = 0;
+let mise_coment = '';
 let city_name = {
     '서울': 'Seoul',
     '부산': 'busan',
@@ -302,7 +303,7 @@ $(document).ready(function () {
         navigator.geolocation.getCurrentPosition(function (position) {
             const latitude = String(position.coords.latitude);
             const longitude = String(position.coords.longitude);
-            $('.weather_coment_text').empty();
+            mise_coment = '';
             firstCall(longitude, latitude);
             secondCall(longitude, latitude); //추가(미세, 초미세)
             thirdCall(longitude, latitude); // 추가 (습도,풍속,자외선,강수)
@@ -317,7 +318,7 @@ function showError(error) {
 
         case error.PERMISSION_DENIED:
             alert("사용자가 정보제공을 거부했습니다. 서울기준으로 출력합니다.");
-             $('.weather_coment_text').empty();
+             mise_coment = '';
             secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             cityCall();
@@ -325,7 +326,7 @@ function showError(error) {
 
         case error.POSITION_UNAVAILABLE:
             alert("위치정보 이용 불가,서울기준으로 출력합니다.");
-             $('.weather_coment_text').empty();
+            mise_coment = '';
             secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             cityCall();
@@ -333,7 +334,7 @@ function showError(error) {
 
         case error.TIMEOUT:
             alert("위치정보 얻기 요청 시간초과,서울기준으로 출력합니다.");
-             $('.weather_coment_text').empty();
+            mise_coment = '';
             secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             cityCall();
@@ -341,7 +342,7 @@ function showError(error) {
 
         case error.UNKNOWN_ERROR:
             alert("예상치 못한 에러 발생");
-             $('.weather_coment_text').empty();
+            mise_coment = '';
             secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
             cityCall();
@@ -1339,6 +1340,7 @@ function ChangeCity(event) {
             }
             getEvent_once(temp);
             if (city != '') {
+                mise_coment = '';
                 secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
                 thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
                 cityCall();
@@ -1348,7 +1350,6 @@ function ChangeCity(event) {
 }
 
 let UV_coment = '';
-let mise_coment = '';
 let rain_coment = '';
 
 
@@ -1405,35 +1406,27 @@ function secondCall(lon, lat) {
                     break;
             }
             if (mise_degree == '나쁨' && king_mise_degree == '나쁨') {
-                mise_coment = '';
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
             } else if (mise_degree == '나쁨' && king_mise_degree == '보통' || mise_degree == '보통' && king_mise_degree == '나쁨') {
-               mise_coment = '';
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
             } else if (mise_degree == '나쁨' && king_mise_degree == '좋음' || mise_degree == '좋음' && king_mise_degree == '나쁨') {
-                mise_coment = '';
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
             } else if (mise_degree == '좋음' && king_mise_degree == '좋음') {
-                mise_coment = '';
                 mise_coment = '미세먼지 지수가 좋음 수준입니다.\n 오늘은 공기가 참 좋네요!!!'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
             } else if (mise_degree == '좋음' && king_mise_degree == '보통' || mise_degree == '보통' && king_mise_degree == '좋음') {
-                mise_coment = '';
                 mise_coment = '미세먼지 지수가 좋음 수준입니다.\n 오늘은 공기가 참 좋네요!!!'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
             } else if (mise_degree == '보통' && king_mise_degree == '보통') {
-                mise_coment = '';
                 mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
             } else if (mise_degree == '나쁨' && king_mise_degree == '좋음') {
-                mise_coment = '';
                 mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
             } else if (mise_degree == '좋음' && king_mise_degree == '나쁨') {
-                mise_coment = '';
                 mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
             }
