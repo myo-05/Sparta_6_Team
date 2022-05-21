@@ -409,7 +409,6 @@ sub {
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y: scroll;
-    overflow-x: scroll;
 }
 
 .front {
