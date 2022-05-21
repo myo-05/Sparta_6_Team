@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+
+
+<script>
+       // 위도, 경도 지정
+    $.ajax({
+        type: "GET",
+        url:"http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=4a992b233723cebcd77991cb28f2bd39",
+        dataType: 'json',
+        success: function(response){
+            $('#mise').empty();
+            let $supermise= response['list'][0]['components']['pm10']; //초미세먼지
+            let $mise= response['list'][0]['components']['pm2_5'];  //미세먼지
+            // console.log(response['list'][0]['components']['pm10']);
+            // console.log(response['list'][0]['components']['pm2_5']);
+
+            $('.supermise').append($supermise);
+            $('.mise').append($mise);
+            
+            
+            }
+            
+        })
+      
+    </script>
+
+<body>
+    <h2 class="mise">현재 미세먼지(μg/m3)</h2>
+    <h2 class="supermise">현재 초미세먼지(μg/m3)</h2>
+    
+
+</body>
+</html>
