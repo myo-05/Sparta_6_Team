@@ -414,7 +414,6 @@ function firstCall(lon, lat) {
                     $('.txt').css('color', 'white');
                     $('.new').css('color', 'white');
                 }
-                console.log($Icon);
                 // 기온별 대표 옷차림.
 
 
@@ -1017,7 +1016,6 @@ function ChangeCity(event) {
         url_link = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ec9cd6710da1e9cecf9b13dfaad54c36&units=metric`;
         city = input_val.value;
     }
-    console.log(lon[city_name_reverse[city]]);
     input_val.value = null;
     let weatherIcon = {
         '01': 'fas fa-sun',
@@ -1404,27 +1402,21 @@ function secondCall(lon, lat) {
             if (mise_degree == '나쁨' && king_mise_degree == '나쁨') {
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                console.log(mise_coment);
             } else if (mise_degree == '나쁨' && king_mise_degree == '보통' || mise_degree == '보통' && king_mise_degree == '나쁨') {
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                console.log(mise_coment);
             } else if (mise_degree == '나쁨' && king_mise_degree == '좋음' || mise_degree == '좋음' && king_mise_degree == '나쁨') {
                 mise_coment = '공기가 좋지 않으니, \n마스크를 챙겨야 할 것 같아요 :('
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                console.log(mise_coment);
             } else if (mise_degree == '좋음' && king_mise_degree == '좋음') {
                 mise_coment = '미세먼지 지수가 좋음 수준입니다.\n 오늘은 공기가 참 좋네요!!!'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                console.log(mise_coment);
             } else if (mise_degree == '좋음' && king_mise_degree == '보통' || mise_degree == '보통' && king_mise_degree == '좋음') {
                 mise_coment = '미세먼지 지수가 좋음 수준입니다.\n 오늘은 공기가 참 좋네요!!!'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                console.log(mise_coment);
             } else if (mise_degree == '보통' && king_mise_degree == '보통') {
                 mise_coment = '미세먼지 지수가 보통 수준입니다.\n 오늘 공기는 무난한 수준입니다.'
                 mise_coment = mise_coment.replace(/\n/g, '<Br>');
-                console.log(mise_coment);
             }
 
             $('.mise_degree').html(mise_degree);
@@ -1482,7 +1474,6 @@ function thirdCall(lon, lat) {
             $('.rain_degree').html(rain_degree * 100 + ' %');
             $('.humid_degree').html(humid_degree + ' %');
             $('.weather_coment_text').html(myHTML);
-            console.log(myHTML);
 
         }
     })
