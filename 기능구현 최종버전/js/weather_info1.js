@@ -303,6 +303,7 @@ function femaleEvent(tep) {
 }
 
 $(document).ready(function () {
+    $('.weather_coment_text').empty();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             const latitude = String(position.coords.latitude);
@@ -1007,7 +1008,6 @@ function cityCall() {
 
 
 function ChangeCity(event) {
-     $('.weather_coment_text').empty();
     let url_link = '';
     event.preventDefault();
     if (input_val.value in city_name) {
@@ -1339,6 +1339,7 @@ function ChangeCity(event) {
             }
             getEvent_once(temp);
             if (city != '') {
+                 $('.weather_coment_text').empty();
                 secondCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
                 thirdCall(lon[city_name_reverse[city]], lat[city_name_reverse[city]]);
                 cityCall();
@@ -1350,7 +1351,6 @@ function ChangeCity(event) {
 
 
 function secondCall(lon, lat) {
-    mise_coment = '';
     $.ajax({
         url: `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=4a992b233723cebcd77991cb28f2bd39`,
         dataType: 'json',
@@ -1438,9 +1438,6 @@ function secondCall(lon, lat) {
 
 ////// 뒷면 (위치에 따른 기상 정보->습도,풍속,자외선,강수)
 function thirdCall(lon, lat) {
-    UV_coment = '';
-    rain_coment = '';
-
     $.ajax({
         url: `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=daily&appid=4a992b233723cebcd77991cb28f2bd39&units=metric`,
         dataType: 'json',
