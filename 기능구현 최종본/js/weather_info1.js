@@ -380,10 +380,10 @@ function firstCall(lon, lat) {
             dataType: 'json',
             type: 'GET',
             success: function (data) {
-                $('.clothes3').html('<h1 class="new">성별을 선택해 주세요.</h1>');
                 rain = data.weather[0].main;
                 let $Icon = (data.weather[0].icon).substring(0, 2);
                 let temp = Math.round(data.main.temp);
+                clothes_call(temp, 'male');
                 let $Temp = Math.round(data.main.temp) + 'º';
                 let $city = data.name;
                 let $MaxTemp = Math.round(data.main.temp_max) + 'º';
@@ -710,10 +710,10 @@ function cityCall() {
         dataType: 'json',
         type: 'GET',
         success: function (data) {
-            $('.clothes3').html('<h1 class="new">성별을 선택해 주세요.</h1>');
             rain = data.weather[0].main;
             let $Icon = (data.weather[0].icon).substring(0, 2);
             let temp = Math.round(data.main.temp);
+            clothes_call(temp, 'male');
             let $Temp = Math.round(data.main.temp) + 'º';
             let $city = city;
             let $MaxTemp = Math.round(data.main.temp_max) + 'º';
@@ -1046,10 +1046,10 @@ function ChangeCity(event) {
         dataType: 'json',
         type: 'GET',
         success: function (data) {
-            $('.clothes3').html('<h1 class="new">성별을 선택해 주세요.</h1>');
             rain = data.weather[0].main;
             let $Icon = (data.weather[0].icon).substring(0, 2);
             let temp = Math.round(data.main.temp);
+            clothes_call(temp, 'male');
             let $Temp = Math.round(data.main.temp) + 'º';
             let $city = city;
             let $MaxTemp = Math.round(data.main.temp_max) + 'º';
@@ -1347,7 +1347,7 @@ function ChangeCity(event) {
 
 
 function secondCall(lon, lat) {
-     $('.weather_coment_text').empty();
+    $('.weather_coment_text').empty();
     $.ajax({
         url: `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=4a992b233723cebcd77991cb28f2bd39`,
         dataType: 'json',
@@ -1467,7 +1467,7 @@ function thirdCall(lon, lat) {
                 rain_coment = '비 소식이 없어요!! \n 비 걱정을 좀 덜어도 되겠어요!!\n'
                 rain_coment = rain_coment.replace(/\n/g, '<Br>');
             }
-            myHTML= '현재 기온은 ' + temperture + '℃ 이고,<br>' +
+            myHTML = '현재 기온은 ' + temperture + '℃ 이고,<br>' +
                 '자외선 지수는 ' + UV + ' 수준이므로<br>' +
                 UV_coment + '<br>' + rain_coment + mise_coment
 
