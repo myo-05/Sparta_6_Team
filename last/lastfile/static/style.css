@@ -1,0 +1,481 @@
+/* 베이직 */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    font-family: 'Jua', sans-serif;
+}
+
+.clearfix::after, .clearfix::before {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* 레이아웃 */
+#wrap {
+    width: 100%;
+    background-color: rgba(203, 236, 255, 0.168);
+    background-position: center;
+    background-size: cover;
+    height: 1500px;
+}
+
+#header {
+    width: 100%;
+    height: 100px;
+    /* background-color: rgb(181, 207, 240); */
+    /*border-bottom: 1px solid rgba(245, 245, 245, 0.221); */
+    margin-bottom: 100px;
+}
+
+#main {
+    width: 100%;
+    height: 1000px;
+    padding: 0 40px 100px 40px;
+    display: flex;
+    /*background-image: url('../images/번개.gif');*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#footer {
+    margin-top: 200px;
+    width: 100%;
+    height: 300px;
+    background-color: rgb(45, 45, 45);
+    border-top: 1px solid rgba(245, 245, 245, 0.221);
+}
+
+/* 헤더 */
+#logo {
+    display: inline-block;
+    float: left;
+}
+
+h1 {
+    text-align: initial;
+    margin-left: 30px;
+    font-size: 40px;
+    padding-top: 20px;;
+    font-weight: 300;
+}
+
+h1 .red {
+    color: red;
+}
+
+h1 .yel {
+    color: yellow;
+}
+
+h1 .green {
+    color: rgb(119, 191, 117);
+}
+
+/* 메인 */
+
+#card1 {
+    margin: 0;
+    width: 28%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+#card1-f .return {
+    width: 5%;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+#card1-b .return {
+    width: 5%;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+#card2-f .return {
+    width: 5%;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+#card2-b .return {
+    width: 5%;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+
+#card2 {
+    margin: 0 0 0 35px;
+    width: 70%;
+    height: 80%;
+    background-color: rgba(84, 0, 0, 0);
+    border-radius: 30px;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+
+}
+
+
+#card2 h2 {
+    font-weight: 200;
+    font-size: 60px;
+    margin: 5% 0;
+}
+
+#card2 .Jang {
+    width: 55%;
+}
+
+.input_box {
+    display: flex;
+    flex-direction: row;
+    font-size: 25px;
+}
+
+input {
+    color: black;
+    width: 200px;
+    height: 30px;
+}
+
+button {
+    color: black;
+    width: 50px;
+    height: 30px;
+}
+
+.input_out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.weather-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Temp {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 40px;
+    margin-top: 10%;
+}
+
+.sup_sub {
+    display: flex;
+    flex-direction: column;
+}
+
+sup {
+    color: red;
+}
+
+sub {
+    color: blue;
+}
+
+.feel_con {
+    font-size: 40px;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.icon_con {
+    font-size: 40px;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.city_con {
+    font-size: 50px;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* 날씨 정보 카드 */
+
+.weather_coment_text,
+.rainfall,
+.humid,
+.mise,
+.king_mise {
+    color: white;
+}
+
+
+.weather_comment {
+    width: 100%;
+    height: 73%;
+    text-align: center;
+}
+
+.weather_coment_text {
+    font-size: 1vw;
+    line-height: 55px;
+    width: 93%;
+    margin: auto;
+    position: absolute;
+    top: 37%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+        display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+.line{
+    background-color: white;
+    width: 90%;
+    height: 2px;
+    top: 72%;
+    left: 5%;
+    right: 5%;
+    position: absolute;
+}
+.weather_info{
+    width: 90%;
+    height: 20%;
+    padding: 2%;
+    top: 77%;
+    left: 5%;
+    right: 5%;
+    position: absolute;
+
+}
+
+.rainfall,
+.humid,
+.mise,
+.king_mise{
+    width: 25%;
+    height: 50%;
+    color: white;
+    font-size: 0.7vw;
+    text-align: center;
+    float: left;
+}
+
+.rainfall_icon,
+.humid_icon,
+.mise_icon,
+.king_mise_icon{
+    width: 27%;
+    margin-bottom: 7%;
+}
+
+.rain_degree,
+.humid_degree,
+.mise_degree,
+.king_mise_degree{
+    font-size: 1vw;
+    margin-bottom: 10%;
+}
+
+/*카드 뒤집기 효과*/
+
+.card2_front,
+.card1_back,
+.card2_back,
+.card1_front {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border: 3px solid rgba(85, 85, 85, 0.297);
+    border-radius: 30px;
+}
+
+.card1_back,
+.card2_back {
+    transform: rotateY(180deg);
+    display: flex;
+    padding: 20px;
+}
+
+/* 카드 뒷면 */
+.card2_back .sum {
+    width: 60%;
+    height: 100%;
+}
+
+.card2_back .sum ul {
+    margin: 0 auto;
+    width: 200px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.card2_back .sum .manbtn {
+    border-radius: 20px;
+    float: left;
+    width: 100px;
+    height: 100%;
+    background-color: rgba(125, 125, 125);
+}
+
+.card2_back .sum .manbtn:hover {
+    cursor: pointer;
+}
+
+.card2_back .sum .manbtn p {
+    color: #000;
+    padding: 10px;
+}
+
+.card2_back .sum .womanbtn p {
+    color: #000;
+    padding: 10px;
+}
+
+.card2_back .sum .womanbtn {
+    border-radius: 20px;
+    float: left;
+    width: 100px;
+    height: 100%;
+    background-color: #fff;
+}
+
+.card2_back .sum .womanbtn:hover {
+    cursor: pointer;
+}
+
+.card2_back .sum .clothes1 {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: url(images/22~20.png) no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+}
+
+.card2_back .sum .clothes1_2 {
+    width: 100%;
+    height: 100%;
+    background: url(images/12~16남.png) no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+.card2_back .container .clothes2 {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(84, 84, 84, 0.378);
+    border-radius: 20px;
+}
+
+.card2_back .clothes3 {
+    width: 100%;
+    height: 100%;
+     background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.front {
+    width: 100%;
+    position: absolute;
+    background: blanchedalmond;
+    backface-visibility: hidden;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+
+}
+
+.front p {
+    font-size: 32px;
+    margin: 5% 7%;
+
+}
+
+.back {
+
+    width: 100%;
+    transform: rotateY(-90deg);
+    display: flex;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* 푸터 */
+
+.fot1 {
+    width: 95%;
+    margin: 1% auto 0;
+}
+
+.fot1 h3 {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 40px;
+    font-weight: 100;
+    color: #999;
+}
+
+.fot1 hr {
+    background-color: #dadada
+}
+
+.info {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 100;
+    color: #999;
+}
+
+.clothes_link {
+    width: 33.3%;
+    height: 250px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+.return2 {
+    width: 5%;
+    position: absolute;
+    bottom: 90%;
+    right: 65%;
+}
