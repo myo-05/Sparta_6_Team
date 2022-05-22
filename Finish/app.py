@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, json
+from flask import Flask, render_template, jsonify
 app = Flask(__name__)
 
 
@@ -32,4 +32,5 @@ def weatherFive():
 
 
 if __name__ =='__main__':
+    app.debug = True
     app.run()
